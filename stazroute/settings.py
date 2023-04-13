@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'storages',
+    'captcha',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -85,23 +86,23 @@ WSGI_APPLICATION = 'stazroute.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-#
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bddportfolio',
-        'USER': 'stazroute',
-        'PASSWORD': 'Daas1998.',
-        'HOST': 'django-portfolio.cbfxe74kbaxn.us-east-1.rds.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'bddportfolio',
+#         'USER': 'stazroute',
+#         'PASSWORD': 'Daas1998.',
+#         'HOST': 'django-portfolio.cbfxe74kbaxn.us-east-1.rds.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -163,15 +164,15 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
+###########" aws
+# AWS_QUERYSTRING_AUTH = False
 
-AWS_QUERYSTRING_AUTH = False
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-AWS_ACCESS_KEY_ID = 'AKIA2PDEUQ7QMIPWQJMQ'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'stazroute-portfolio-personal'
-
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
+# AWS_ACCESS_KEY_ID = 'AKIA2PDEUQ7QMIPWQJMQ'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'stazroute-portfolio-personal'
+#
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None

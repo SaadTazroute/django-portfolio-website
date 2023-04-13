@@ -1,14 +1,20 @@
+import os
 from datetime import timezone
 
 from django.db import models
 from django.contrib.auth.models import User
-
+import boto3,io
+# s3 = boto3.client('s3')
 
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
+
+from PIL import Image
+
+from stazroute import settings
 
 
 class Profile(models.Model):
@@ -54,14 +60,35 @@ class Post(models.Model):
 
 			has_slug = Post.objects.filter(slug=slug).exists()
 			count = 1
+
 			while has_slug:
 				count += 1
 				slug = slugify(self.headline) + '-' + str(count) 
 				has_slug = Post.objects.filter(slug=slug).exists()
 
 			self.slug = slug
-
 		super().save(*args, **kwargs)
+		# # Open the thumbnail image using PIL
+		# img_path = self.thumbnail.url
+		#
+		# # Read the image from S3
+		# s3_response = s3.get_object(Bucket='stazroute-portfolio-personal', Key=img_path)
+		# image_content = s3_response['Body'].read()
+		#
+		# # Open the image using Pillow
+		# img = Image.open(io.BytesIO(image_content))
+		#
+		# # Resize the image
+		# img = img.resize((640,360))
+		#
+		# # Save the resized image to a buffer
+		# buffer = io.BytesIO()
+		# img.save(buffer, format='JPEG')
+		# buffer.seek(0)
+		#
+		# # Upload the resized image to S3
+		# s3.put_object(Bucket='stazroute-portfolio-personal', Key='resized/' + image_path, Body=buffer.getvalue())
+
 
 
 class PostComment(models.Model):
