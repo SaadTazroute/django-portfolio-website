@@ -25,6 +25,10 @@ To add a new project to your portfolio, log in to the admin panel at http://127.
 
 To edit or delete an existing project, click on the project name in the "Projects" section and make the necessary changes.
 
+
+
+
+
 You can also customize the appearance of the website by modifying the CSS and HTML files in the "static" and "templates" folders respectively.
 
 ## Contributing
